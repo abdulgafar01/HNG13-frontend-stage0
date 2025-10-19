@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <title>Profile Card</title>
+
 </head>
 <body>
-    
+  <button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
+
+  <article data-testid="test-profile-card">
+    <figure>
+      <img
+        src="https://i.pravatar.cc/300"
+        alt="User avatar"
+        data-testid="test-user-avatar"
+        id="user-avatar"
+      />
+      <button class="upload-btn" id="upload-btn">Upload</button>
+      <input type="file" accept="image/*" id="upload-input" class="upload-input" />
+    </figure>
+
+    <div>
+      <header>
+        <h2 data-testid="test-user-name">Busari Abdulgafar</h2>
+      </header>
+
+      <p data-testid="test-user-bio">
+        A passionate frontend engineer building sleek, scalable interfaces and modern web experiences with React, Next.js, and TypeScript.
+      </p>
+
+      <small data-testid="test-user-time" id="user-time"></small>
+
+      <nav data-testid="test-user-social-links" aria-label="User social links">
+        <a href="https://github.com/abdulgafar01" target="_blank" rel="noopener noreferrer"
+          data-testid="test-user-social-github">GitHub</a>
+        <a href="https://www.linkedin.com/in/abdulgafar-busari" target="_blank" rel="noopener noreferrer"
+          data-testid="test-user-social-linkedin">LinkedIn</a>
+      </nav>
+
+      <section data-testid="test-user-hobbies">
+        <h3>Hobbies</h3>
+        <ul>
+          <li>Coding</li>
+          <li>Design</li>
+          <li>Reading</li>
+        </ul>
+      </section>
+
+      <section data-testid="test-user-dislikes">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Procrastination</li>
+          <li>Bugs 🐞</li>
+          <li>Slow Wi-Fi</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+    <script src="main.js"></script>
 </body>
 </html>

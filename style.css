@@ -1,0 +1,202 @@
+  :root {
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --radius: 1rem;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #111827;
+      --card-bg: #1f2937;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --accent: #3b82f6;
+      --shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 1rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    article[data-testid="test-profile-card"] {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      width: 100%;
+      overflow: hidden;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    article:hover {
+      transform: translateY(-4px);
+    }
+
+    @media (min-width: 768px) {
+      article[data-testid="test-profile-card"] {
+        grid-template-columns: 290px 1fr;
+        max-width: 720px;
+      }
+    }
+
+    figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    img[data-testid="test-user-avatar"] {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transition: opacity 0.3s ease;
+    }
+
+    .upload-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    .upload-btn:hover {
+      opacity: 1;
+    }
+
+    .upload-input {
+      display: none;
+    }
+
+    header {
+      padding: 1rem 1.5rem 0;
+    }
+
+    h2[data-testid="test-user-name"] {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    p[data-testid="test-user-bio"] {
+      color: var(--muted);
+      padding: 0 1.5rem;
+      line-height: 1.6;
+    }
+
+    small[data-testid="test-user-time"] {
+      display: block;
+      padding: 0 1.5rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    nav[data-testid="test-user-social-links"] {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0 1.5rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: var(--accent);
+      color: white;
+      outline: none;
+    }
+
+    section {
+      padding: 0 1.5rem 1rem;
+    }
+
+    section h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    li {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    [data-theme="dark"] li {
+      background: #374151;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.upload-btn:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
