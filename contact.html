@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Profile Card</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+
+  <body>
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="nav-brand"><a href="index.html">Profile</a></div>
+      <div class="nav-links">
+        <button class="theme-toggle nav-toggle" id="theme-toggle" aria-label="Toggle color theme">🌙</button>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <article data-testid="test-contact-page" class="contact-card">
+          <header class="contact-header">
+            <h1>Contact Us</h1>
+            <p class="lead">Have a question or want to collaborate? Send a message — we typically reply within 24 hours.</p>
+          </header>
+
+          <div class="contact-grid">
+            <aside class="contact-info" aria-label="Contact information">
+              <h2>Get in touch</h2>
+              <p>Prefer email? Reach us at <a href="mailto:hello@example.com">hello@example.com</a>. Or fill out the form — we read every message.</p>
+
+              <ul class="meta-list">
+                <li><strong>Email</strong><br><a href="mailto:hello@example.com">hello@example.com</a></li>
+                <li><strong>Phone</strong><br><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                <li><strong>Location</strong><br>Remote — Worldwide</li>
+              </ul>
+            </aside>
+
+            <section class="contact-form-wrap">
+              <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="contact-name">Full Name</label>
+            <input
+              type="text"
+              id="contact-name"
+                    placeholder="Jane Doe"
+              data-testid="test-contact-name"
+              aria-describedby="test-contact-error-name"
+              required
+            />
+            <small
+              id="test-contact-error-name"
+              data-testid="test-contact-error-name"
+              class="error-message"
+            ></small>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input
+              type="email"
+              id="contact-email"
+                    placeholder="you@company.com"
+              data-testid="test-contact-email"
+              aria-describedby="test-contact-error-email"
+              required
+            />
+            <small
+              id="test-contact-error-email"
+              data-testid="test-contact-error-email"
+              class="error-message"
+            ></small>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <input
+              type="text"
+              id="contact-subject"
+                    placeholder="Project or question summary"
+              data-testid="test-contact-subject"
+              aria-describedby="test-contact-error-subject"
+              required
+            />
+            <small
+              id="test-contact-error-subject"
+              data-testid="test-contact-error-subject"
+              class="error-message"
+            ></small>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              data-testid="test-contact-message"
+              rows="4"
+                    placeholder="Tell us a bit about what you need..."
+              aria-describedby="test-contact-error-message"
+              required
+            ></textarea>
+            <small
+              id="test-contact-error-message"
+              data-testid="test-contact-error-message"
+              class="error-message"
+            ></small>
+          </div>
+                <div class="form-actions">
+                  <button
+                    type="submit"
+                    id="contact-submit"
+                    data-testid="test-contact-submit"
+                    class="btn-primary"
+                  >
+                    Send message
+                  </button>
+                </div>
+                <p
+                  id="contact-success"
+                  data-testid="test-contact-success"
+                  class="success-message"
+                  hidden
+                >
+                  ✅ Message sent successfully! We'll get back to you soon.
+                </p>
+              </form>
+            </section>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+    <script>
+      // --- Contact Form Validation ---
+      const form = document.getElementById("contact-form");
+      const successMsg = document.getElementById("contact-success");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+        successMsg.hidden = true;
+
+        const name = document.getElementById("contact-name");
+        const email = document.getElementById("contact-email");
+        const subject = document.getElementById("contact-subject");
+        const message = document.getElementById("contact-message");
+
+        const errors = {
+          name: document.getElementById("test-contact-error-name"),
+          email: document.getElementById("test-contact-error-email"),
+          subject: document.getElementById("test-contact-error-subject"),
+          message: document.getElementById("test-contact-error-message"),
+        };
+
+        Object.values(errors).forEach((el) => (el.textContent = ""));
+
+        // Validation
+        if (!name.value.trim()) {
+          errors.name.textContent = "Full name is required.";
+          isValid = false;
+        }
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!email.value.trim()) {
+          errors.email.textContent = "Email is required.";
+          isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+          errors.email.textContent = "Enter a valid email address.";
+          isValid = false;
+        }
+
+        if (!subject.value.trim()) {
+          errors.subject.textContent = "Subject is required.";
+          isValid = false;
+        }
+
+        if (!message.value.trim()) {
+          errors.message.textContent = "Message is required.";
+          isValid = false;
+        } else if (message.value.length < 10) {
+          errors.message.textContent = "Message must be at least 10 characters.";
+          isValid = false;
+        }
+
+        if (isValid) {
+          successMsg.hidden = false;
+          form.reset();
+        }
+      });
+    </script>
+  </body>
+</html>

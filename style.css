@@ -24,10 +24,69 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
-      padding: 1rem;
+      padding: 4.5rem 1rem 1rem; /* leave space for navbar */
       transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* ---- Site Navbar ---- */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0 1rem;
+      background: var(--card-bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      z-index: 50;
+    }
+
+    .nav-brand a {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.45rem 0.75rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      background: var(--accent);
+      color: #fff;
+      outline: none;
+    }
+
+    .nav-link.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 520px) {
+      .nav-links {
+        gap: 0.25rem;
+      }
+      body {
+        padding-top: 5rem;
+      }
     }
 
     article[data-testid="test-profile-card"] {
@@ -167,25 +226,30 @@
       background: #374151;
     }
 
-    /* Theme toggle */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--card-bg);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
+/* Theme toggle (now used inside navbar) */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
 
-    .theme-toggle:hover {
-      background: var(--accent);
-      color: #fff;
-    }
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
     
 a:focus-visible,
 button:focus-visible {
@@ -200,3 +264,264 @@ button:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
+
+
+/* ---- Forms ---- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+input,
+textarea {
+  border: 1px solid var(--muted);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--card-bg);
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+button[type="submit"] {
+  align-self: start;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+}
+
+.success-message {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+/* ---- About & Contact (scoped contact styles) ---- */
+/* Keep about styles simple; provide enhanced, scoped styles for the contact page */
+.about-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+  margin: 2rem auto;
+  transition: background 0.3s ease;
+}
+
+.about-card section {
+  margin-bottom: 1.5rem;
+}
+
+.about-card h2 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+/* Contact page: tightly scoped styles to avoid affecting other pages */
+article.contact-card,
+article[data-testid="test-contact-page"] {
+ background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+  margin: 2rem auto;
+  transition: background 0.3s ease;
+}
+
+.contact-header h1 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+}
+
+.contact-header .lead {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+.contact-info {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: rgba(0,0,0,0.03);
+  color: var(--text);
+}
+
+.contact-info h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.contact-info p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.meta-list {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.meta-list li {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.meta-list a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-form-wrap {
+  padding: 0.5rem 0;
+}
+
+.contact-form-wrap form {
+  background: transparent;
+  padding: 0;
+  gap: 0.9rem;
+}
+
+.contact-form-wrap .form-group label {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.contact-form-wrap input,
+.contact-form-wrap textarea {
+  width: 80%;
+  border-radius: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(99,102,241,0.06);
+ 
+}
+
+.contact-form-wrap input::placeholder,
+.contact-form-wrap textarea::placeholder {
+  color: rgba(107,114,128,0.7);
+}
+
+.contact-form-wrap input:focus,
+.contact-form-wrap textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.06);
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #7c3aed 30%));
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.05rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.12);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.98;
+}
+
+.success-message {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* Make contact grid follow the same responsive behavior as the about/profile card
+   stacked on small screens, two-column from 768px up */
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 290px 1fr; /* mirror about/profile card */
+    gap: 1.25rem;
+  }
+
+  .contact-info {
+    position: sticky;
+    top: calc(3.5rem + 1rem);
+    height: fit-content;
+    padding: 1.25rem;
+  }
+
+  article.contact-card {
+    padding: 2rem;
+    margin: 2.25rem auto;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  article.contact-card {
+    padding: 1.25rem;
+    /* margin: 1.25rem 0.75rem; */
+  }
+
+  .contact-header h1 {
+    font-size: 1.45rem;
+  }
+
+  .contact-info {
+    padding: 0.85rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.6rem;
+  }
+}
+

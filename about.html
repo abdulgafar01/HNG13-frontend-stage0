@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me | Profile Card</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+
+  <body>
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="nav-brand"><a href="index.html">Profile</a></div>
+      <div class="nav-links">
+        <button class="theme-toggle nav-toggle" id="theme-toggle" aria-label="Toggle color theme">🌙</button>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </nav>
+
+    <main data-testid="test-about-page" class="about-card">
+      <h1>About Me</h1>
+
+      <section data-testid="test-about-bio">
+        <h2>Bio</h2>
+        <p>
+          I'm Busari Abdulgafar — a passionate frontend engineer who loves
+          building sleek, responsive, and accessible web applications with
+          React, Next.js, and TypeScript.
+        </p>
+      </section>
+
+      <section data-testid="test-about-goals">
+        <h2>Goals in This Program</h2>
+        <ul>
+          <li>Sharpen my frontend and backend development skills.</li>
+          <li>Learn how to structure scalable full-stack projects.</li>
+          <li>Contribute to open-source and collaborative projects.</li>
+        </ul>
+      </section>
+
+      <section data-testid="test-about-confidence">
+        <h2>Areas of Low Confidence</h2>
+        <p>
+          I occasionally struggle with time management and balancing multiple
+          projects, especially when deadlines overlap. I'm actively improving
+          this by adopting better task scheduling.
+        </p>
+      </section>
+
+      <section data-testid="test-about-future-note">
+        <h2>Note to Future Self</h2>
+        <p>
+          Keep building, stay consistent, and never stop learning. Every small
+          project compounds into expertise — your persistence is your strength.
+        </p>
+      </section>
+
+      <section data-testid="test-about-extra">
+        <h2>Extra Thoughts</h2>
+        <p>
+          Collaboration and mentorship accelerate growth — always aim to learn
+          from others and share what you know. Growth is a two-way street.
+        </p>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
